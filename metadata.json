@@ -1,0 +1,6 @@
+{
+  "name": "Esstana Hotels",
+  "description": "An ultra-luxurious, modern, senior full-stack website for Esstana Hotels featuring premium services, real-time booking, curated local attractions, a rich gallery and blog, and a server-side Gemini-powered AI Hotel Concierge.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
