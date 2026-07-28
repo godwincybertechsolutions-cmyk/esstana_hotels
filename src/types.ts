@@ -40,8 +40,8 @@ export interface Facility {
 export interface Attraction {
   id: string;
   name: string;
-  category: 'Culture' | 'Shopping' | 'Nature' | 'Leisure';
-  distance: string; // e.g. "1.5 km (5 mins drive)"
+  category: 'Nature' | 'Culture' | 'Leisure' | 'Shopping';
+  distance: string; // e.g. "5 km"
   description: string;
   imageUrl: string;
   highlights: string[];
@@ -62,7 +62,7 @@ export interface BlogPost {
 export interface GalleryItem {
   id: string;
   title: string;
-  category: 'rooms' | 'dining' | 'events' | 'wellness' | 'video';
+  category: 'Rooms' | 'Dining' | 'Views' | 'Attraction Sites' | 'Conference Facilities' | 'video';
   type: 'image' | 'video';
   url: string;
   thumbnailUrl?: string;
