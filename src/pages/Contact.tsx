@@ -54,7 +54,7 @@ export default function ContactPage() {
           </h1>
           <div className="w-20 h-[1px] bg-[#C5A880] mt-6 mb-12" />
           <p className="text-sm text-[#1A1A1A]/70 leading-relaxed font-sans max-w-2xl">
-            Whether arranging private air access, customizing sensory room controls, or requesting high-stakes boardroom amenities, our elite hosting crew remains at your absolute disposal.
+            We are just a call away. Our team at Esstana Hotels is ready to assist with reservations, event inquiries, conference facilities, and all your accommodation needs.
           </p>
         </div>
 
@@ -78,10 +78,12 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <span className="block text-[10px] uppercase tracking-widest font-mono text-[#C5A880]">
-                      The Sanctuary Location
+                      Esstana Hotels Location
                     </span>
                     <span className="block text-xs font-sans mt-1 leading-relaxed text-[#FAF9F6]/85">
-                      72 Promenade Royale, Central District, Brussels 1000, Belgium
+                      Piai - Murinduko Rd<br />
+                      P.O. Box 2547 - 60100<br />
+                      Embu Kenya
                     </span>
                   </div>
                 </li>
@@ -92,10 +94,11 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <span className="block text-[10px] uppercase tracking-widest font-mono text-[#C5A880]">
-                      Dignitary Reservations
+                      Direct Reservations
                     </span>
                     <span className="block text-xs font-mono mt-1 text-[#FAF9F6]/85">
-                      +32 (2) 555-0192 (International toll-free)
+                      +254 707 937 736<br />
+                      +254 786 242 544
                     </span>
                   </div>
                 </li>
@@ -106,10 +109,10 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <span className="block text-[10px] uppercase tracking-widest font-mono text-[#C5A880]">
-                      Secure Email Correspondences
+                      Email Inquiries
                     </span>
                     <span className="block text-xs font-sans mt-1 text-[#FAF9F6]/85">
-                      concierge@esstana.com
+                      info@esstanahotels.com
                     </span>
                   </div>
                 </li>
