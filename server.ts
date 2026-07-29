@@ -13,8 +13,18 @@ async function startServer() {
   const app = express();
   const PORT = 3000;
 
-  // Body parsing middleware
-  app.use(express.json());
+  // Body parsing middleware with size limit
+  app.use(express.json({ limit: '10kb' }));
+  
+  // Security headers middleware
+  app.use((req, res, next) => {
+    res.setHeader('X-Content-Type-Options', 'nosniff');
+    res.setHeader('X-Frame-Options', 'DENY');
+    res.setHeader('X-XSS-Protection', '1; mode=block');
+    res.setHeader('Content-Security-Policy', "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'");
+    res.setHeader('Strict-Transport-Security', 'max-age=31536000; includeSubDomains');
+    next();
+  });
 
   // Supabase Setup
   const supabaseUrl = process.env.SUPABASE_URL;
@@ -130,13 +140,47 @@ async function startServer() {
     }
   });
 
+  // Input validation helper
+  function validateBookingInput(data: any) {
+    const errors = [];
+    
+    if (!data.roomTypeId || typeof data.roomTypeId !== 'string' || data.roomTypeId.length > 50) {
+      errors.push('Invalid room type');
+    }
+    if (!data.guestName || typeof data.guestName !== 'string' || data.guestName.length > 100 || data.guestName.length < 2) {
+      errors.push('Guest name must be 2-100 characters');
+    }
+    if (!data.guestEmail || typeof data.guestEmail !== 'string' || !data.guestEmail.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
+      errors.push('Invalid email format');
+    }
+    if (data.guestPhone && (typeof data.guestPhone !== 'string' || data.guestPhone.length > 20)) {
+      errors.push('Phone must be less than 20 characters');
+    }
+    if (!data.checkIn || !data.checkOut || !/^\d{4}-\d{2}-\d{2}$/.test(data.checkIn) || !/^\d{4}-\d{2}-\d{2}$/.test(data.checkOut)) {
+      errors.push('Invalid date format (use YYYY-MM-DD)');
+    }
+    if (new Date(data.checkIn) >= new Date(data.checkOut)) {
+      errors.push('Check-out must be after check-in');
+    }
+    if (data.guests && (typeof data.guests !== 'number' || data.guests < 1 || data.guests > 10)) {
+      errors.push('Guests must be between 1 and 10');
+    }
+    if (data.totalPrice && (typeof data.totalPrice !== 'number' || data.totalPrice < 0 || data.totalPrice > 1000000)) {
+      errors.push('Invalid price amount');
+    }
+    
+    return errors;
+  }
+
   // Create a new booking
   app.post('/api/bookings', async (req, res) => {
     try {
       const { roomTypeId, roomName, guestName, guestEmail, guestPhone, checkIn, checkOut, guests, totalPrice } = req.body;
       
-      if (!roomTypeId || !guestName || !guestEmail || !checkIn || !checkOut) {
-        return res.status(400).json({ error: 'Missing required fields for booking.' });
+      // Validate input
+      const validationErrors = validateBookingInput({ roomTypeId, guestName, guestEmail, guestPhone, checkIn, checkOut, guests, totalPrice });
+      if (validationErrors.length > 0) {
+        return res.status(400).json({ error: validationErrors.join('; ') });
       }
 
       // Generate elegant reference ID
@@ -163,18 +207,19 @@ async function startServer() {
           .from('bookings')
           .insert([{
             id: referenceId,
-            room_type_id: roomTypeId,
-            room_name: roomName,
-            guest_name: guestName,
-            guest_email: guestEmail,
-            guest_phone: guestPhone || 'N/A',
+            room_type_id: String(roomTypeId).slice(0, 50),
+            room_name: String(roomName).slice(0, 100),
+            guest_name: String(guestName).slice(0, 100),
+            guest_email: String(guestEmail).slice(0, 100),
+            guest_phone: String(guestPhone || 'N/A').slice(0, 20),
             check_in: checkIn,
             check_out: checkOut,
-            guests: Number(guests) || 1,
-            total_price: Number(totalPrice) || 0,
+            guests: Math.min(Math.max(Number(guests) || 1, 1), 10),
+            total_price: Math.max(Number(totalPrice) || 0, 0),
             status: 'confirmed',
             created_at: newBooking.createdAt
-          }]);
+          }])
+          .select();
 
         if (error) {
           console.error('Supabase insert error:', error.message);

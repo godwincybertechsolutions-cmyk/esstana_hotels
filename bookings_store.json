@@ -1,0 +1,16 @@
+[
+  {
+    "id": "EST-98214A",
+    "roomTypeId": "executive-suite",
+    "roomName": "Executive Suite",
+    "guestName": "Esteemed Visitor",
+    "guestEmail": "visitor@esstana.com",
+    "guestPhone": "+1 (555) 019-2831",
+    "checkIn": "2026-08-15",
+    "checkOut": "2026-08-18",
+    "guests": 2,
+    "totalPrice": 1350,
+    "status": "confirmed",
+    "createdAt": "2026-07-28T13:30:39.504Z"
+  }
+]

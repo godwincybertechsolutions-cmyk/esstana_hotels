@@ -18,7 +18,7 @@ export default function Footer() {
             </div>
           </div>
           <p className="text-xs text-[#FAF9F6]/60 leading-relaxed font-sans max-w-sm">
-            Esstana Hotels represents the gold standard of bespoke hospitality. Combining modern luxury design, Michelin-calibre dining, state-of-the-art conference facilities, and personal service tailored to each guest's sensory peace.
+            Esstana Hotels is the perfect getaway to indulge yourself in sumptuous meals, highly affordable accommodation, conducive environments for conferences, board meetings, outings, and parties for yourself and your loved ones.
           </p>
           <div className="flex items-center space-x-4">
             <div className="flex items-center space-x-2 text-[11px] text-[#C5A880] font-mono">
@@ -27,7 +27,7 @@ export default function Footer() {
             </div>
             <div className="flex items-center space-x-2 text-[11px] text-[#C5A880] font-mono">
               <Shield className="w-4 h-4" />
-              <span>Secure Sanctuary</span>
+              <span>Secure & Safe</span>
             </div>
           </div>
         </div>
@@ -62,15 +62,40 @@ export default function Footer() {
         {/* Services & Venues */}
         <div className="flex flex-col space-y-6">
           <h4 className="text-xs uppercase tracking-[0.25em] text-[#C5A880] font-mono font-semibold">
-            Bespoke Venues
+            Our Facilities
           </h4>
           <ul className="space-y-3 text-xs text-[#FAF9F6]/70">
-            <li>L’Ambroisie Fine Dining Restaurant</li>
-            <li>The Gilded Vault Cocktail Bar</li>
-            <li>The Crown Executive Boardroom</li>
-            <li>Grand Presidential Sanctuary</li>
-            <li>Grand Ballroom Conference Suite</li>
-            <li>Helipad & Chauffeur Garaging</li>
+            <li>Esstana Main Restaurant</li>
+            <li>The Gilded Lounge & Bar</li>
+            <li>The Crown Boardroom</li>
+            <li>Twin Bed Rooms & Suites</li>
+            <li>Conference Hall & Events</li>
+            <li>Secure Guest Parking</li>
+          </ul>
+        </div>
+
+        {/* Contact Info */}
+        <div className="flex flex-col space-y-6">
+          <h4 className="text-xs uppercase tracking-[0.25em] text-[#C5A880] font-mono font-semibold">
+            Contact Info
+          </h4>
+          <ul className="space-y-4">
+            <li className="flex items-start space-x-3 text-xs text-[#FAF9F6]/70">
+              <MapPin className="w-4 h-4 text-[#C5A880] shrink-0 mt-0.5" />
+              <span>Piai - Murinduko Rd, P.O. Box 2547 - 60100, Embu Kenya</span>
+            </li>
+            <li className="flex items-center space-x-3 text-xs text-[#FAF9F6]/70">
+              <Phone className="w-4 h-4 text-[#C5A880] shrink-0" />
+              <span>+254 707 937 736</span>
+            </li>
+            <li className="flex items-center space-x-3 text-xs text-[#FAF9F6]/70">
+              <Phone className="w-4 h-4 text-[#C5A880] shrink-0" />
+              <span>+254 786 242 544</span>
+            </li>
+            <li className="flex items-center space-x-3 text-xs text-[#FAF9F6]/70">
+              <Mail className="w-4 h-4 text-[#C5A880] shrink-0" />
+              <span>info@esstanahotels.com</span>
+            </li>
           </ul>
         </div>
 
@@ -102,7 +127,7 @@ export default function Footer() {
 
       {/* Copy & Fine Print */}
       <div className="max-w-7xl mx-auto px-6 md:px-12 mt-16 pt-8 border-t border-[#C5A880]/10 flex flex-col md:flex-row items-center justify-between text-[11px] text-[#FAF9F6]/40">
-        <p>© 2026 Esstana Hotels & Resorts. All Rights Reserved. Dignified Luxury Since 1994.</p>
+        <p>© 2026 Esstana Hotels. All Rights Reserved. Your Perfect Getaway in Embu, Kenya.</p>
         <div className="flex space-x-6 mt-4 md:mt-0 font-sans">
           <a href="#privacy" className="hover:text-[#C5A880] transition-colors">Privacy Policy</a>
           <a href="#terms" className="hover:text-[#C5A880] transition-colors">Terms of Stay</a>

@@ -59,14 +59,14 @@ export default function Services() {
       <div className="max-w-7xl mx-auto flex flex-col items-center">
         {/* Title & Introduction */}
         <span className="text-xs uppercase tracking-[0.3em] text-[#C5A880] font-mono font-semibold">
-          Luxury Facilities
+          Our Amenities
         </span>
         <h1 className="font-serif text-3xl md:text-5xl font-light tracking-wide uppercase mt-4 text-center">
-          Services & Venues
+          Services & Facilities
         </h1>
         <div className="w-20 h-[1px] bg-[#C5A880] mt-6 mb-8" />
         <p className="text-center text-sm text-[#1A1A1A]/70 leading-relaxed font-sans max-w-2xl">
-          At Esstana Hotels, we provide a masterfully curated environment for rest, business, and fine dining. Each facility is built with meticulous attention to comfort, performance, and security.
+          Esstana Hotels offers world-class amenities for relaxation, conferences, and corporate events. Every facility is designed with guest comfort, safety, and exceptional service as our priority.
         </p>
 
         {/* Categories Filtering Bar */}

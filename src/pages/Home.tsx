@@ -64,7 +64,7 @@ export default function Home() {
             className="flex items-center space-x-2 text-[#C5A880] uppercase tracking-[0.4em] text-xs font-mono mb-4"
           >
             <Sparkles className="w-4 h-4" />
-            <span>EXCELLENCE IN HOSPITALITY</span>
+            <span>YOUR PERFECT GETAWAY</span>
           </motion.div>
 
           <motion.h1
@@ -371,9 +371,9 @@ export default function Home() {
             </p>
           </div>
           <div className="flex flex-col space-y-2">
-            <span className="text-xs uppercase tracking-widest text-[#C5A880] font-mono font-semibold">Directions</span>
+            <span className="text-xs uppercase tracking-widest text-[#C5A880] font-mono font-semibold">Easy Access</span>
             <p className="text-xs text-[#FAF9F6]/80 font-sans">
-              Just 200m off the main Embu-Meru highway. Embu Town centre is just a 5 minutes ride away.
+              Just 200m from the Embu-Meru highway. Embu Town centre is 5 minutes away. Perfect distance for peace and access.
             </p>
           </div>
         </div>

@@ -139,7 +139,7 @@ export const ATTRACTIONS_DATA: Attraction[] = [
     name: 'Mount Kenya',
     category: 'Nature',
     distance: '45 km from hotel',
-    description: 'Africa’s second-highest peak, offering majestic snow-capped vistas, rich alpine flora, wildlife, and world-class trekking opportunities.',
+    description: 'Africa\'s second-highest peak, offering majestic snow-capped vistas, rich alpine flora, wildlife, and world-class trekking opportunities.',
     imageUrl: 'https://images.unsplash.com/photo-1589556264800-08ae9e129a8c?auto=format&fit=crop&w=800&q=80',
     highlights: ['Guided trekking & hiking', 'Unmatched mountain vistas', 'UNESCO World Heritage Site']
   },
@@ -284,7 +284,7 @@ export const GALLERY_DATA: GalleryItem[] = [
     title: 'Esstana Hotels Overview Video',
     category: 'video',
     type: 'video',
-    url: 'https://youtu.be/boD3pWhMMRs?si=afRUbpSJM9KD91lX',
+    url: 'https://www.youtube.com/embed/boD3pWhMMRs?si=afRUbpSJM9KD91lX',
     thumbnailUrl: 'https://img.youtube.com/vi/boD3pWhMMRs/hqdefault.jpg'
   }
 ];
