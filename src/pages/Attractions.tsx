@@ -33,17 +33,17 @@ export default function AttractionsPage() {
       .map((a) => a.name)
       .join(', ');
 
-    const prompt = `Act as the Esstana Hotel virtual Head Butler. Draft a beautifully formatted, elegant, hour-by-hour travel itinerary for an Esteemed Guest.
+    const prompt = `Act as the Esstana Hotels Concierge. Draft a beautifully formatted, detailed hour-by-hour travel itinerary for our valued guest.
 Stay Details:
 - Number of Days: ${itineraryDays} Days
 - Travel Style: ${travelStyle}
-- Preferred Local Attractions selected: ${attractionNames || 'Showcase all available near the hotel'}
+- Preferred Local Attractions: ${attractionNames || 'Showcase popular attractions near Embu'}
 
-Structure your answer with:
-1. A warm, formal greeting in character.
-2. A day-by-day sequence with specific, sophisticated hours (e.g. '09:00 AM - Organic Breakfast at L’Ambroisie', '03:00 PM - Champagne Balcony at Opera').
-3. Include recommendations on when to transit back to the hotel for a signature cocktail at The Gilded Vault Bar.
-Keep the layout extremely neat with standard bullet points and markdown highlights. Do not write a continuous long paragraph.`;
+Structure your itinerary with:
+1. A warm, professional greeting.
+2. A day-by-day sequence with specific times (e.g., '09:00 AM - Breakfast at Esstana Main Restaurant', '02:00 PM - Visit Seven Forks Dams').
+3. Include recommendations for dining and relaxation at Esstana Hotels throughout the day.
+Keep the layout clean with bullet points and clear markdown formatting. No long paragraphs.`;
 
     try {
       const res = await fetch('/api/concierge', {
@@ -73,10 +73,10 @@ Keep the layout extremely neat with standard bullet points and markdown highligh
         {/* Title */}
         <div className="flex flex-col items-center text-center">
           <span className="text-xs uppercase tracking-[0.3em] text-[#C5A880] font-mono font-semibold">
-            Bespoke Guide
+            Explore Embu
           </span>
           <h1 className="font-serif text-3xl md:text-5xl font-light tracking-wide uppercase mt-4">
-            Curated Local Attractions
+            Local Attractions & Activities
           </h1>
           <div className="w-20 h-[1px] bg-[#C5A880] mt-6 mb-8" />
           <p className="text-sm text-[#1A1A1A]/70 leading-relaxed font-sans max-w-2xl">

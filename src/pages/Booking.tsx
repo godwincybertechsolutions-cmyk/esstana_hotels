@@ -96,6 +96,20 @@ export default function BookingPage() {
       setErrorMessage('Please provide your full name and email address.');
       return;
     }
+    
+    // Email format validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(guestEmail)) {
+      setErrorMessage('Please enter a valid email address.');
+      return;
+    }
+    
+    // Guest name length validation
+    if (guestName.trim().length < 2 || guestName.trim().length > 100) {
+      setErrorMessage('Guest name must be between 2 and 100 characters.');
+      return;
+    }
+    
     setErrorMessage('');
     setWizardStep(3);
   };
@@ -275,10 +289,10 @@ export default function BookingPage() {
                     >
                       <div className="border-b border-[#C5A880]/10 pb-4">
                         <h3 className="font-serif text-lg tracking-wider uppercase text-[#FAF9F6]">
-                          Step 1: Choose Sanctuary & Dates
+                          Step 1: Choose Room & Dates
                         </h3>
                         <p className="text-[10px] text-[#C5A880] font-mono uppercase tracking-widest mt-1">
-                          Select stay duration and accommodations.
+                          Select your stay duration and room type.
                         </p>
                       </div>
 
@@ -323,7 +337,7 @@ export default function BookingPage() {
                       <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
                         <div className="sm:col-span-2 flex flex-col space-y-2">
                           <label className="text-[10px] uppercase tracking-[0.15em] text-[#C5A880] font-mono">
-                            Select Sanctuary Room
+                            Select Room Type
                           </label>
                           <select
                             value={roomTypeId}
@@ -498,7 +512,7 @@ export default function BookingPage() {
                           <span className="text-white font-sans">{guestName}</span>
                         </div>
                         <div className="flex justify-between border-b border-white/10 pb-2">
-                          <span className="text-white/50 uppercase">Sanctuary:</span>
+                          <span className="text-white/50 uppercase">Room Type:</span>
                           <span className="text-[#C5A880]">{selectedRoom.name}</span>
                         </div>
                         <div className="flex justify-between border-b border-white/10 pb-2">
@@ -654,7 +668,7 @@ export default function BookingPage() {
                   </span>
                 </div>
                 <div className="border-t border-[#C5A880]/10 pt-3 text-xs flex justify-between">
-                  <span className="text-white/50 uppercase">Sanctuary</span>
+                  <span className="text-white/50 uppercase">Room</span>
                   <span className="text-white font-serif">{confirmedBooking.roomName}</span>
                 </div>
                 <div className="text-xs flex justify-between">
@@ -690,7 +704,7 @@ export default function BookingPage() {
                   onClick={() => setConfirmedBooking(null)}
                   className="bg-[#C5A880] hover:bg-[#B89047] text-black px-5 py-3 rounded-lg text-[10px] uppercase tracking-wider font-semibold transition-colors cursor-pointer"
                 >
-                  Book Another Sanctuary
+                  Book Another Room
                 </button>
               </div>
             </motion.div>

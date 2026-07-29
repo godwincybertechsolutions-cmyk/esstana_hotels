@@ -27,7 +27,7 @@ export default function Footer() {
             </div>
             <div className="flex items-center space-x-2 text-[11px] text-[#C5A880] font-mono">
               <Shield className="w-4 h-4" />
-              <span>Secure Sanctuary</span>
+              <span>Secure & Safe</span>
             </div>
           </div>
         </div>

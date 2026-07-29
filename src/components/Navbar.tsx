@@ -159,7 +159,7 @@ export default function Navbar({ openAIConcierge }: NavbarProps) {
                 Esstana Guest Services
               </p>
               <p className="text-[11px] text-[#C5A880] mt-1 font-mono">
-                +1 (800) ESSTANA
+                +254 707 937 736
               </p>
             </div>
           </div>
