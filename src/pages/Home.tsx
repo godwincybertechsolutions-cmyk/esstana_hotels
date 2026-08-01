@@ -4,6 +4,8 @@ import { motion } from 'motion/react';
 import { ArrowRight, Calendar, Users, Award, Shield, Compass, Sparkles, MapPin, Phone, Zap } from 'lucide-react';
 import { ROOMS_DATA, ATTRACTIONS_DATA } from '../data';
 import OptionWheel from '../components/OptionWheel';
+import FallingText from '../components/FallingText';
+import '../components/FallingText.css';
 
 export default function Home() {
   const navigate = useNavigate();
