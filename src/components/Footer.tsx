@@ -98,7 +98,7 @@ export default function Footer() {
             </li>
           </ul>
         </div>
-
+      </div>
 
       {/* Copy & Fine Print */}
       <div className="max-w-7xl mx-auto px-6 md:px-12 mt-16 pt-8 border-t border-[#C5A880]/10 flex flex-col md:flex-row items-center justify-between text-[11px] text-[#FAF9F6]/40">
