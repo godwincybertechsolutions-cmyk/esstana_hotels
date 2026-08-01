@@ -42,21 +42,29 @@ export default function ContactPage() {
   ];
 
   return (
-    <div id="contact-page" className="bg-[#FAF9F6] text-[#1A1A1A] pt-32 pb-24 px-6 md:px-12 min-h-screen">
+    <div id="contact-page" className="bg-gradient-to-b from-[#FAF9F6] to-[#F5F4F1] text-[#1A1A1A] pt-32 pb-24 px-6 md:px-12 min-h-screen">
       <div className="max-w-7xl mx-auto">
         {/* Title */}
-        <div className="flex flex-col items-center text-center">
-          <span className="text-xs uppercase tracking-[0.3em] text-[#C5A880] font-mono font-semibold">
-            Concierge Desk
-          </span>
-          <h1 className="font-serif text-3xl md:text-5xl font-light tracking-wide uppercase mt-4">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="flex flex-col items-center text-center"
+        >
+          <div className="flex items-center justify-center space-x-2 text-[#C5A880] uppercase tracking-[0.3em] text-xs font-mono font-semibold mb-4">
+            <Phone className="w-4 h-4" />
+            <span>Concierge Desk</span>
+            <Phone className="w-4 h-4" />
+          </div>
+          <h1 className="font-serif text-4xl md:text-6xl font-light tracking-wider uppercase text-[#1A1A1A] mb-2">
             Connect with Esstana
           </h1>
-          <div className="w-20 h-[1px] bg-[#C5A880] mt-6 mb-12" />
-          <p className="text-sm text-[#1A1A1A]/70 leading-relaxed font-sans max-w-2xl">
-            We are just a call away. Our team at Esstana Hotels is ready to assist with reservations, event inquiries, conference facilities, and all your accommodation needs.
+          <div className="divider-gold w-32 mx-auto my-6" />
+          <p className="text-sm text-[#1A1A1A]/70 leading-relaxed font-sans max-w-3xl">
+            Our dedicated team is always available to assist you. Whether you're planning a getaway, organizing an event, or seeking special requests, we're here to exceed your expectations.
           </p>
-        </div>
+        </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 mt-16 items-start">
           {/* Contact Details Column */}

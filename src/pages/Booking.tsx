@@ -181,17 +181,25 @@ export default function BookingPage() {
   };
 
   return (
-    <div id="booking-page" className="bg-[#FAF9F6] text-[#1A1A1A] pt-32 pb-24 px-6 md:px-12 min-h-screen">
+    <div id="booking-page" className="bg-gradient-to-b from-[#FAF9F6] to-[#F5F4F1] text-[#1A1A1A] pt-32 pb-24 px-6 md:px-12 min-h-screen">
       <div className="max-w-7xl mx-auto">
         {/* Header Title & Sub Navigation */}
-        <div className="flex flex-col items-center text-center">
-          <span className="text-xs uppercase tracking-[0.3em] text-[#C5A880] font-mono font-semibold">
-            Bespoke Reservation
-          </span>
-          <h1 className="font-serif text-3xl md:text-5xl font-light tracking-wide uppercase mt-4">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="flex flex-col items-center text-center"
+        >
+          <div className="flex items-center justify-center space-x-2 text-[#C5A880] uppercase tracking-[0.3em] text-xs font-mono font-semibold mb-4">
+            <Calendar className="w-4 h-4" />
+            <span>Bespoke Reservation</span>
+            <Calendar className="w-4 h-4" />
+          </div>
+          <h1 className="font-serif text-4xl md:text-6xl font-light tracking-wider uppercase text-[#1A1A1A] mb-2">
             Reservations Desk
           </h1>
-          <div className="w-20 h-[1px] bg-[#C5A880] mt-6 mb-12" />
+          <div className="divider-gold w-32 mx-auto my-6" />
 
           {/* Sub Tabs */}
           <div className="flex space-x-4 border-b border-[#C5A880]/20 pb-4 mb-12 w-full max-w-md justify-center">
@@ -226,7 +234,7 @@ export default function BookingPage() {
               )}
             </button>
           </div>
-        </div>
+        </motion.div>
 
         {/* Wizard Panel */}
         <AnimatePresence mode="wait">

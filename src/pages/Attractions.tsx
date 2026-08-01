@@ -68,21 +68,28 @@ Keep the layout clean with bullet points and clear markdown formatting. No long 
   };
 
   return (
-    <div id="attractions-page" className="bg-[#FAF9F6] text-[#1A1A1A] pt-32 pb-24 px-6 md:px-12">
+    <div id="attractions-page" className="bg-gradient-to-b from-[#FAF9F6] to-[#F5F4F1] text-[#1A1A1A] pt-32 pb-24 px-6 md:px-12">
       <div className="max-w-7xl mx-auto">
         {/* Title */}
-        <div className="flex flex-col items-center text-center">
-          <span className="text-xs uppercase tracking-[0.3em] text-[#C5A880] font-mono font-semibold">
-            Explore Embu
-          </span>
-          <h1 className="font-serif text-3xl md:text-5xl font-light tracking-wide uppercase mt-4">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="flex flex-col items-center text-center"
+        >
+          <div className="flex items-center justify-center space-x-2 text-[#C5A880] uppercase tracking-[0.3em] text-xs font-mono font-semibold mb-4">
+            <MapPin className="w-4 h-4" />
+            <span>Explore Embu</span>
+            <MapPin className="w-4 h-4" />
+          </div>
+          <h1 className="font-serif text-4xl md:text-6xl font-light tracking-wider uppercase text-[#1A1A1A] mb-2">
             Local Attractions & Activities
           </h1>
-          <div className="w-20 h-[1px] bg-[#C5A880] mt-6 mb-8" />
-          <p className="text-sm text-[#1A1A1A]/70 leading-relaxed font-sans max-w-2xl">
-            Step outside our elegant doors into a rich tapestry of history, high-fashion boutiques, and scenic botanicals. Review our handpicked selection of city landmarks.
+          <div className="divider-gold w-32 mx-auto my-6" />
+          <p className="text-sm text-[#1A1A1A]/70 leading-relaxed font-sans max-w-3xl">
+            Venture beyond our elegant doors to discover Embu's natural wonders, cultural treasures, and scenic landscapes. Experience authentic attractions curated specifically for our valued guests.
           </p>
-
           {/* Filtering tabs */}
           <div className="flex space-x-2 my-10 bg-black/5 p-1 rounded-lg">
             {(['All', 'Culture', 'Shopping', 'Nature'] as const).map((cat) => (
@@ -97,7 +104,7 @@ Keep the layout clean with bullet points and clear markdown formatting. No long 
               </button>
             ))}
           </div>
-        </div>
+        </motion.div>
 
         {/* Attractions Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
