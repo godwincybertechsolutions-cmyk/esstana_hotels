@@ -1,0 +1,74 @@
+.falling-text-container {
+  position: relative;
+  width: 100%;
+  height: auto;
+  min-height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  font-family: inherit;
+}
+
+.falling-text-target {
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  text-align: center;
+  font-weight: 300;
+  letter-spacing: 0.05em;
+}
+
+.falling-text-target .word {
+  display: inline-block;
+  margin: 0.3em 0.2em;
+  padding: 0.2em 0.3em;
+  font-weight: 400;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.falling-text-target .word:hover {
+  transform: scale(1.05);
+}
+
+.falling-text-target .word.highlighted {
+  color: #C5A880;
+  font-weight: 600;
+  text-shadow: 0 0 20px rgba(197, 168, 128, 0.4);
+}
+
+.falling-text-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .falling-text-container {
+    min-height: 250px;
+  }
+
+  .falling-text-target .word {
+    margin: 0.2em 0.15em;
+    padding: 0.1em 0.2em;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .falling-text-target .word {
+    transition: none;
+  }
+
+  .falling-text-target .word:hover {
+    transform: none;
+  }
+}

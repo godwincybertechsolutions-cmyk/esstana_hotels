@@ -22,18 +22,22 @@ export default function GalleryPage() {
     : photosList.filter((g) => g.category === selectedPhotoCategory);
 
   return (
-    <div id="gallery-page" className="bg-[#FAF9F6] text-[#1A1A1A] pt-32 pb-24 px-6 md:px-12 min-h-screen">
+    <div id="gallery-page" className="bg-gradient-to-b from-[#FAF9F6] to-[#F5F4F1] text-[#1A1A1A] pt-32 pb-24 px-6 md:px-12 min-h-screen">
       <div className="max-w-7xl mx-auto">
         {/* Page title */}
         {!activeArticle && (
-          <div className="flex flex-col items-center text-center">
-            <span className="text-xs uppercase tracking-[0.3em] text-[#C5A880] font-mono font-semibold">
-              Media & Stories
-            </span>
-            <h1 className="font-serif text-3xl md:text-5xl font-light tracking-wide uppercase mt-4">
-              Gallery & Curated Blog
-            </h1>
-            <div className="w-20 h-[1px] bg-[#C5A880] mt-6 mb-12" />
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="flex flex-col items-center text-center"
+          >
+            <div className="flex items-center justify-center space-x-2 text-[#C5A880] uppercase tracking-[0.3em] text-xs font-mono font-semibold mb-4">
+              <Eye className="w-4 h-4" />
+              <span>Media & Stories</span>
+              <Eye className="w-4 h-4" />
+            </div>
 
             {/* Sub-section Navigation Tabs */}
             <div className="flex space-x-6 border-b border-black/10 pb-4 mb-12 w-full max-w-md justify-center">
@@ -53,7 +57,7 @@ export default function GalleryPage() {
                 </button>
               ))}
             </div>
-          </div>
+          </motion.div>
         )}
 
         {/* Gallery Render Panels */}

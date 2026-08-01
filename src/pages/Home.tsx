@@ -70,14 +70,23 @@ export default function Home() {
             <span>YOUR PERFECT GETAWAY</span>
           </motion.div>
 
-          <motion.h1
+          <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.2, delay: 0.2 }}
-            className="font-serif text-4xl md:text-7xl font-light tracking-[0.15em] leading-tight uppercase max-w-4xl"
+            className="w-full max-w-5xl"
           >
-            ESSTANA HOTELS
-          </motion.h1>
+            <FallingText
+              text="ESSTANA HOTELS"
+              highlightWords={['ESSTANA']}
+              highlightClass="highlighted"
+              trigger="scroll"
+              fontSize="3.5rem"
+              gravity={0.8}
+              backgroundColor="transparent"
+              className="falling-text-hero"
+            />
+          </motion.div>
 
           <motion.p
             initial={{ opacity: 0 }}

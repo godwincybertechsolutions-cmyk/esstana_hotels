@@ -62,19 +62,29 @@ export default function Services() {
   };
 
   return (
-    <div id="services-page" className="bg-[#FAF9F6] text-[#1A1A1A] pt-32 pb-24 px-6 md:px-12">
+    <div id="services-page" className="bg-gradient-to-b from-[#FAF9F6] to-[#F5F4F1] text-[#1A1A1A] pt-32 pb-24 px-6 md:px-12">
       <div className="max-w-7xl mx-auto flex flex-col items-center">
         {/* Title & Introduction */}
-        <span className="text-xs uppercase tracking-[0.3em] text-[#C5A880] font-mono font-semibold">
-          Our Amenities
-        </span>
-        <h1 className="font-serif text-3xl md:text-5xl font-light tracking-wide uppercase mt-4 text-center">
-          Services & Facilities
-        </h1>
-        <div className="w-20 h-[1px] bg-[#C5A880] mt-6 mb-8" />
-        <p className="text-center text-sm text-[#1A1A1A]/70 leading-relaxed font-sans max-w-2xl">
-          Esstana Hotels offers world-class amenities for relaxation, conferences, and corporate events. Every facility is designed with guest comfort, safety, and exceptional service as our priority.
-        </p>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="text-center"
+        >
+          <div className="flex items-center justify-center space-x-2 text-[#C5A880] uppercase tracking-[0.3em] text-xs font-mono font-semibold mb-4">
+            <div className="w-8 h-[1px] bg-[#C5A880]" />
+            <span>World-Class Amenities</span>
+            <div className="w-8 h-[1px] bg-[#C5A880]" />
+          </div>
+          <h1 className="font-serif text-4xl md:text-6xl font-light tracking-wider uppercase text-center text-[#1A1A1A] mb-2">
+            Services & Facilities
+          </h1>
+          <div className="divider-gold w-32 mx-auto my-6" />
+          <p className="text-center text-sm text-[#1A1A1A]/70 leading-relaxed font-sans max-w-3xl">
+            Esstana Hotels offers meticulously designed amenities for relaxation, conferences, and corporate events. Every facility reflects our commitment to guest comfort, safety, and exceptional service.
+          </p>
+        </motion.div>
 
         {/* Categories Filtering Bar */}
         <div className="flex flex-wrap items-center justify-center gap-2 md:gap-4 my-12 bg-black/5 p-2 rounded-xl border border-black/5 w-full max-w-5xl">
