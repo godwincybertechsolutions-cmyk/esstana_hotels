@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'motion/react';
-import { ArrowRight, Calendar, Users, Award, Shield, Compass, Sparkles, MapPin, Phone } from 'lucide-react';
+import { ArrowRight, Calendar, Users, Award, Shield, Compass, Sparkles, MapPin, Phone, Zap } from 'lucide-react';
 import { ROOMS_DATA, ATTRACTIONS_DATA } from '../data';
+import OptionWheel from '../components/OptionWheel';
 
 export default function Home() {
   const navigate = useNavigate();
@@ -11,6 +12,8 @@ export default function Home() {
     checkOut: new Date(Date.now() + 86400000 * 3).toISOString().split('T')[0],
     guests: 2,
   });
+  const [selectedRoomIndex, setSelectedRoomIndex] = useState(0);
+  const roomNames = ROOMS_DATA.map(r => r.name);
 
   const handleQuickCheck = (e: React.FormEvent) => {
     e.preventDefault();
@@ -304,6 +307,140 @@ export default function Home() {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Premium Interactive Room Selection */}
+      <section id="interactive-rooms" className="py-32 bg-gradient-to-b from-[#FAF9F6] to-[#F5F4F1] px-6 md:px-12">
+        <div className="max-w-7xl mx-auto flex flex-col items-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="flex flex-col items-center text-center mb-16"
+          >
+            <div className="flex items-center space-x-2 text-[#C5A880] uppercase tracking-[0.3em] text-xs font-mono mb-4">
+              <Zap className="w-4 h-4" />
+              <span>Interactive Experience</span>
+            </div>
+            <h2 className="font-serif text-3xl md:text-5xl font-light tracking-wide uppercase mb-6">
+              Explore Your Perfect Room
+            </h2>
+            <p className="text-sm text-[#1A1A1A]/70 max-w-2xl leading-relaxed">
+              Discover our curated selection of premium accommodations using our interactive room explorer. Scroll, drag, or click to find your ideal getaway.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 w-full items-start">
+            {/* Option Wheel */}
+            <motion.div
+              initial={{ opacity: 0, x: -40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              viewport={{ once: true }}
+              className="lg:col-span-1"
+            >
+              <OptionWheel
+                items={roomNames}
+                defaultSelected={selectedRoomIndex}
+                onChange={(index) => setSelectedRoomIndex(index)}
+                textColor="#1A1A1A"
+                activeColor="#C5A880"
+                fontSize={1.8}
+                spacing={1.6}
+                curve={1}
+                tilt={8}
+                blur={1}
+                fade={0.2}
+                minOpacity={0.1}
+                smoothing={250}
+                inset={60}
+                loop={true}
+                draggable={true}
+                className="shadow-lg"
+              />
+            </motion.div>
+
+            {/* Room Details Card */}
+            <motion.div
+              key={selectedRoomIndex}
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.4 }}
+              className="lg:col-span-2"
+            >
+              {ROOMS_DATA[selectedRoomIndex] && (
+                <div className="bg-white rounded-2xl shadow-2xl overflow-hidden border border-[#C5A880]/10 h-full flex flex-col">
+                  {/* Room Image */}
+                  <div className="relative h-64 overflow-hidden">
+                    <img
+                      src={ROOMS_DATA[selectedRoomIndex].imageUrl}
+                      alt={ROOMS_DATA[selectedRoomIndex].name}
+                      className="w-full h-full object-cover"
+                      referrerPolicy="no-referrer"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
+                    <div className="absolute top-4 right-4 bg-[#C5A880] text-black px-4 py-2 rounded-lg font-semibold text-sm">
+                      KSh {ROOMS_DATA[selectedRoomIndex].pricePerNight.toLocaleString()}/night
+                    </div>
+                  </div>
+
+                  {/* Content */}
+                  <div className="p-8 flex-grow flex flex-col">
+                    <h3 className="font-serif text-3xl font-light text-[#1A1A1A] mb-2">
+                      {ROOMS_DATA[selectedRoomIndex].name}
+                    </h3>
+                    <div className="w-12 h-[2px] bg-[#C5A880] mb-4" />
+
+                    <p className="text-sm text-[#1A1A1A]/75 leading-relaxed mb-6">
+                      {ROOMS_DATA[selectedRoomIndex].description}
+                    </p>
+
+                    {/* Room Specs Grid */}
+                    <div className="grid grid-cols-3 gap-4 mb-6 py-6 border-y border-[#C5A880]/10">
+                      <div className="text-center">
+                        <span className="block text-xs text-[#C5A880] uppercase tracking-widest font-mono mb-1">Size</span>
+                        <span className="text-lg font-semibold text-[#1A1A1A]">{ROOMS_DATA[selectedRoomIndex].size}</span>
+                      </div>
+                      <div className="text-center">
+                        <span className="block text-xs text-[#C5A880] uppercase tracking-widest font-mono mb-1">Guests</span>
+                        <span className="text-lg font-semibold text-[#1A1A1A]">{ROOMS_DATA[selectedRoomIndex].capacity}</span>
+                      </div>
+                      <div className="text-center">
+                        <span className="block text-xs text-[#C5A880] uppercase tracking-widest font-mono mb-1">Available</span>
+                        <span className="text-lg font-semibold text-[#1A1A1A]">{ROOMS_DATA[selectedRoomIndex].totalRooms}</span>
+                      </div>
+                    </div>
+
+                    {/* Amenities */}
+                    <div className="mb-6 flex-grow">
+                      <h4 className="text-xs uppercase tracking-widest text-[#C5A880] font-mono font-semibold mb-3">
+                        Room Amenities
+                      </h4>
+                      <div className="grid grid-cols-2 gap-2">
+                        {ROOMS_DATA[selectedRoomIndex].amenities.slice(0, 6).map((amenity, idx) => (
+                          <div key={idx} className="flex items-center space-x-2 text-xs text-[#1A1A1A]/70">
+                            <div className="w-1.5 h-1.5 rounded-full bg-[#C5A880]" />
+                            <span>{amenity}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* CTA */}
+                    <button
+                      onClick={() => handleSelectRoom(ROOMS_DATA[selectedRoomIndex].id)}
+                      className="w-full bg-[#C5A880] hover:bg-[#B89047] text-black font-semibold py-3 rounded-lg uppercase tracking-widest text-xs transition-all duration-300 transform hover:scale-105 flex items-center justify-center space-x-2 cursor-pointer"
+                    >
+                      <span>Reserve</span>
+                      <ArrowRight className="w-4 h-4" />
+                    </button>
+                  </div>
+                </div>
+              )}
+            </motion.div>
           </div>
         </div>
       </section>
