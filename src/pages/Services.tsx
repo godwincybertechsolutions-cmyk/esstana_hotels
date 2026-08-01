@@ -5,7 +5,7 @@ import { Wine, BedDouble, HelpCircle, Briefcase, Users, Car, Sparkles, MapPin, C
 import { FACILITIES_DATA, ROOMS_DATA } from '../data';
 import { Facility, RoomType } from '../types';
 
-type FilterType = 'All' | 'Accommodation' | 'Boardroom' | 'Conference Facilities' | 'Bar' | 'Restaurant' | 'parking' | 'Room Types';
+type FilterType = 'All' | 'Boardroom' | 'Conference Facilities' | 'Bar' | 'Restaurant' | 'parking' | 'Room Types';
 
 export default function Services() {
   const navigate = useNavigate();
@@ -15,7 +15,6 @@ export default function Services() {
 
   const filters: FilterType[] = [
     'All',
-    'Accommodation',
     'Room Types',
     'Boardroom',
     'Conference Facilities',
@@ -25,10 +24,10 @@ export default function Services() {
   ];
 
   const filteredFacilities = selectedFilter === 'All' || selectedFilter === 'Room Types'
-    ? (selectedFilter === 'Room Types' ? [] : FACILITIES_DATA)
-    : FACILITIES_DATA.filter(f => f.category === selectedFilter);
+    ? (selectedFilter === 'Room Types' ? [] : FACILITIES_DATA.filter(f => f.category !== 'Accommodation'))
+    : FACILITIES_DATA.filter(f => f.category === selectedFilter && f.category !== 'Accommodation');
 
-  const filteredRooms = selectedFilter === 'All' || selectedFilter === 'Room Types' || selectedFilter === 'Accommodation'
+  const filteredRooms = selectedFilter === 'All' || selectedFilter === 'Room Types'
     ? ROOMS_DATA
     : [];
 
@@ -96,7 +95,7 @@ export default function Services() {
         </div>
 
         {/* Rooms Section Header */}
-        {(selectedFilter === 'All' || selectedFilter === 'Accommodation' || selectedFilter === 'Room Types') && (
+        {(selectedFilter === 'All' || selectedFilter === 'Room Types') && (
           <div className="w-full mb-12 mt-12 flex flex-col items-center">
             <span className="text-xs uppercase tracking-[0.2em] text-[#C5A880] font-mono">
               Room Types
@@ -109,7 +108,7 @@ export default function Services() {
         )}
 
         {/* Rooms Layout */}
-        {(selectedFilter === 'All' || selectedFilter === 'Accommodation' || selectedFilter === 'Room Types') && filteredRooms.length > 0 && (
+        {(selectedFilter === 'All' || selectedFilter === 'Room Types') && filteredRooms.length > 0 && (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 w-full mb-16">
             {filteredRooms.map((room) => (
               <motion.div
