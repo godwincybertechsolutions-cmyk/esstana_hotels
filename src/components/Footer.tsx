@@ -99,31 +99,6 @@ export default function Footer() {
           </ul>
         </div>
 
-        {/* Contact Info */}
-        <div className="flex flex-col space-y-6">
-          <h4 className="text-xs uppercase tracking-[0.25em] text-[#C5A880] font-mono font-semibold">
-            Head Office
-          </h4>
-          <ul className="space-y-4">
-            <li className="flex items-start space-x-3 text-xs text-[#FAF9F6]/70">
-              <MapPin className="w-4 h-4 text-[#C5A880] shrink-0 mt-0.5" />
-              <span>72 Promenade Royale, Central District, Brussels 1000, Belgium</span>
-            </li>
-            <li className="flex items-center space-x-3 text-xs text-[#FAF9F6]/70">
-              <Phone className="w-4 h-4 text-[#C5A880] shrink-0" />
-              <span>+32 (2) 555-0192 (Reservations)</span>
-            </li>
-            <li className="flex items-center space-x-3 text-xs text-[#FAF9F6]/70">
-              <Mail className="w-4 h-4 text-[#C5A880] shrink-0" />
-              <span>concierge@esstana.com</span>
-            </li>
-            <li className="flex items-center space-x-3 text-xs text-[#FAF9F6]/70">
-              <Compass className="w-4 h-4 text-[#C5A880] shrink-0" />
-              <span className="font-mono text-[11px] text-[#C5A880]">GPS: 50.8503° N, 4.3517° E</span>
-            </li>
-          </ul>
-        </div>
-      </div>
 
       {/* Copy & Fine Print */}
       <div className="max-w-7xl mx-auto px-6 md:px-12 mt-16 pt-8 border-t border-[#C5A880]/10 flex flex-col md:flex-row items-center justify-between text-[11px] text-[#FAF9F6]/40">
